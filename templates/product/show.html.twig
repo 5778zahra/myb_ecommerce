@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}Nos produits- Move Your Body {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <img src="/images/products/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
+        </div>
+    {# <h1 class="d-flex justify-content-center my-6">{{ product.name }}</h1> #}
+
+    <div class="col-md-7 my-auto">
+        {# {% for product in products %} #}
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.subtitle }}</p>
+        <span>{{ (product.price / 100)|number_format(2, ',','.') }} €</span>
+        <hr>
+        <p>
+            {{ product.description }}
+        </p>
+        <a href="" class="btn btn-primary">Ajouter au panier</a>
+        </div>
+        </div>
+            {# <div class="col-md-4"> #}
+
+    {# {{ dump(product) }} #}
+
+{% endblock %}
