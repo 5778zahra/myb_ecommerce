@@ -36,6 +36,11 @@ body {
   margin-bottom: 15px;
 }
 
+.cart-icon {
+  height: 20px;
+  padding-left: 20px;
+}
+
 /* .cart {
   border: 2px solid black;
 } */

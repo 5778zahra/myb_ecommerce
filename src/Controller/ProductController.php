@@ -27,17 +27,20 @@ class ProductController extends AbstractController
     {
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
-        
+        $search = new Search();
         $form = $this->createForm(SearchType::class);
+
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $products = $productRepository->findBy(['name' => $form->getData()], ['name' => 'ASC']);
-           // dd($products);
+            $products = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
+            //$products = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
+            //dd($products);
         }
         
         return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
+            //'controller_name' => 'ProductController',
             'products' => $products,
             'form' => $form->createView()
         ]);
