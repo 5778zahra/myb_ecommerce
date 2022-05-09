@@ -3,12 +3,33 @@
 {% block title %}Mes adresses- Moove Your Body{% endblock %}
 
 {% block content %}
-    <a href="" class="btn btn-info btn-sm">Ajouter une adresse</a>
-<div class="text-center">
-    <h1> Mon Compte </h1>
-    Bienvenue {{ app.user.firstname }} dans votre compte.<br/>
-    c'est dans cet espace que vous allez pouvoir gérer toutes vos adresses
+    <a href="{{ path('app_account_address_form') }}" class="btn btn-info btn-sm float-right mt-3">Ajouter une adresse</a>
+    <h1 class="title mt-3"> Mes adresses </h1>
+
+    C'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.</br>
     <a href="{{ path('app_account') }}">Retour</a>
     <hr>
-    VUE DE MES ADRESSES
+    {% if app.user.addresses|length == 0 %}
+    <p class="text-center">
+        Vous n'avez pas encore d'adresse dans votre compte client. Pour en ajouter une veuillez <a href="">cliquez ici</a>
+    </p>
+
+    {% else %}
+        <div class="row mb-3">
+            {% for address in app.user.addresses %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ address.name }}</h5>
+                            <p class="card-text">
+                              {{ address.address }}, <br/>
+                              {{ address.postal }} - {{ address.city }} - {{ address.country }}
+                            </p>
+                          <a href="{{ path('app_account_address_edit', {'id': address.id }) }}">Modifier</a> | <a href="{{ path('app_account_address_delete', {'id': address.id }) }}">Supprimer</a>
+                        </div>
+                    </div> 
+                </div>  
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

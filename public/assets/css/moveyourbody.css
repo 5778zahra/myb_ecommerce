@@ -41,6 +41,10 @@ body {
   padding-left: 20px;
 }
 
+.block-small {
+  max-width: 600px;
+  margin: 0 auto;
+}
 /* .cart {
   border: 2px solid black;
 } */

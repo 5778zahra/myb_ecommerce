@@ -3,7 +3,9 @@
 {% block title %}Se connecter- Move  your Body  {% endblock %}
 
 {% block content %}
-<form method="post">
+
+<div clas="block-small">
+    <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -14,7 +16,7 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
+    <h1 class="h3 mt-3 font-weight-normal">Merci de vous connecter</h1>
     <label for="inputEmail">Votre email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Votre mot de passe</label>
@@ -35,9 +37,14 @@
         </div>
     #}
 
-<hr>
-    <button class="btn btn-lg btn-primary btn-sm" type="submit">
+
+    <button class="btn btn-lg btn-info btn-block mt-3" type="submit">
         Se connecter
     </button>
+    <hr>
+    <p class="text-center">Ou souhaitez-vous <a href="{{ path('app_register') }}">créer un compte</p>
 </form>
+</div>
 {% endblock %}
+
+
