@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/moveyourbody.css') }}"/>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.js') }}" defer></script>
+    {% block javascript %}
+    {% endblock %}
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -244,5 +246,8 @@
       {% include "footer.html.twig" %}
     {% endblock %}
       </footer>
-     </body>
+    </body>
+{% block script %}
+{% endblock %}
+
 </html>
