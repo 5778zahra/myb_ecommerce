@@ -4,7 +4,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
 
-{% block title %}Valider ma commande- Move Your Body!{% endblock %}
+{% block title %}Paiement de ma commande- Move Your Body!{% endblock %}
 
 {% block content %}
     <h2 class="title mt-4">Ma commande</h2>
@@ -21,7 +21,7 @@
             <div class="form-check">        
                 {{ carrier.name}}<br/>
                 {{ carrier.description }}<br/>
-                {{ carrier.price|number_format(2, ',', '.') }}€
+                {{(carrier.price / 100)|number_format(2, ',', '.') }}€
             </div> 
 
         </div>
@@ -67,26 +67,33 @@
 {% endblock %}
 
 {% block script %}
-    <sript type="text/javascript">
-        var stripe = Stripe("sk_test_51KyXipD09fug7xqBQ1kAL9u07UGhLB0Lx81vMI5m68HpLohWJMDq2HgwKI0er2zjKilbE0oZpm2ioU4B8xddtfWT00mPY8iafY");
+
+    <script type="text/javascript">
+        var stripe = Stripe('pk_test_51KyXipD09fug7xqBB79JJcD8SB34ljK4upDhB5V0FqzXenANNWzTzqQmPkCZDlz06I8g40SnHK45vLA5fdADko7N00IxKPXRqE');
         var checkoutButton = document.getElementById("checkout-button");
         checkoutButton.addEventListener("click", function () {
-                fetch("/commande/create-session", {
+                fetch("/commande/create-session/{{ reference }}", {
                     method: "POST",
                 })
                 .then(function (response) {
                     return response.json();
                 })
                 .then(function (session) {
-                    return stripe.redirectToCheckout({ sessionId: session.Id });
+                    if (session.error == 'order')  {
+                        window.location.replace('{{ path('app_order') }}' );
+                    } else {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                    }
+
                 })
                 .then(function (result) {
+
                     if (result.error) {
                         alert(result.error.message);
                     }
                 })
                 .catch(function (error) {
-                    console.error("Error:", error)
+                    console.error("Error:", error);
                 });
         });
     </script>

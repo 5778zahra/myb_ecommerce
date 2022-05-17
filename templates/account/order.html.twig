@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresses- Moove Your Body{% endblock %}
+
+{% block content %}
+
+    <h1 class="title mt-3"> Mes commandes </h1>
+
+    C'est dans cet espace que vous allez pouvoir gérer toutes vos commandes</br>
+    <a href="{{ path('app_account') }}">Retour</a>
+    <hr>
+    {% if app.user.orders|length == 0 %}
+    <p class="text-center">
+        Vous n'avez pas encore passze de commande dans sur MYB.
+    </p>
+
+    {% else %}
+    <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+    
+                {% for order in app.user.orders %}
+                    {# {{ dump(order)}} #}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+    
+    {% endif %}
+{% endblock %}

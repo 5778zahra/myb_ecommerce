@@ -3,14 +3,14 @@
 {% block title %}Mon compte- Moove Your Body{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1> Mon Compte </h1>
+<div>
+    <h1 class="title mt-4"> Mon Compte </h1>
     Bienvenue {{ app.user.firstname }} dans votre compte.<br/>
     c'est dans cet espace que vous allez pouvoir gérer toutes vos informations
     <hr>
     -<a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br/>
-    <a href="{{ path('app_account_address') }}">-Gérer mes adresses</a><br/>
-    -Mes commandes<br>
+    -<a href="{{ path('app_account_address') }}">-Gérer mes adresses</a><br/>
+    -<a href="{{ path('app_account_order') }}">Mes commandes</a><br>
     <hr>
     </div>
 {% endblock %}
