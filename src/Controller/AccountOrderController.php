@@ -24,8 +24,26 @@ class AccountOrderController extends AbstractController
 
         //dd($orders);
 
-        return $this->render('account/order.html.twig');
-           // 'controller_name' => 'AccountOrderController',
-        
+        return $this->render('account/order.html.twig', [
+            'orders' => $orders
+            // 'controller_name' => 'AccountOrderController',
+        ]);
+           
+    }
+
+    #[Route('/compte/mes-commandes/{reference}', name: 'app_account_order_show')]
+    public function show($reference): Response
+    {
+        $order = $this->entityManager->getRepository(Order::class)->findOneByReference($reference);
+
+        if (!$order || $order->getUser() != $this->getUser()) {
+            return $this->redirectToRoute('app_account_order');
+        }
+
+        return $this->render('account/order_show.html.twig', [
+            'order' => $order
+            // 'controller_name' => 'AccountOrderController',
+        ]);
+           
     }
 }

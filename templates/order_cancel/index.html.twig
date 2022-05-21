@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur de paiement - Move Your Body {% endblock %}
+
+{% block content %}
+<h2 class="title mt-3">Erreur de paiement</h2>
+
+<p>Bonjour <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong><br/><br/>
+le paiement de votre commande n°<strong>{{ order.reference}}</strong> a échoué.<br/>
+une notification d'erreur vous a été envoyée par email à l'adresse<strong> {{ order.user.email }}</strong>
+</p>
+<a href="{{ path('app_order') }}" class="btn btn-success">Réessayer le paiement</a>
+   
+{% endblock %}
