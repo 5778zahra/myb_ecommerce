@@ -13,12 +13,12 @@ class Mail
     public function send($to_email, $to_name, $subject, $content)
     {
         $mj = new Client($this->api_key, $this->api_key_secret, true,['version' => 'v3.1']);
-        $mj = new \Mailjet\Client(getenv('MJ_APIKEY_PUBLIC'), getenv('MJ_APIKEY_PRIVATE'),true,['version' => 'v3.1']);
+        //$mj = new \Mailjet\Client(getenv('MJ_APIKEY_PUBLIC'), getenv('MJ_APIKEY_PRIVATE'),true,['version' => 'v3.1']);
         $body = [
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => "zahradh57@gmail.com",
+                        'Email' => "dekzahra@outlook.fr",
                         'Name' => "Move Your Body"
                     ],
                     'To' => [
@@ -39,8 +39,7 @@ class Mail
             ]
         ];
         $response = $mj->post(Resources::$Email, ['body' => $body]);
-        $response->success() && dd($response->getData());
-
+        $response->success();
     }
 }
 
