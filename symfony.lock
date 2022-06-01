@@ -93,7 +93,7 @@
         "version": "v1.0.7"
     },
     "guzzlehttp/guzzle": {
-        "version": "7.4.2"
+        "version": "7.4.3"
     },
     "guzzlehttp/promises": {
         "version": "1.5.1"

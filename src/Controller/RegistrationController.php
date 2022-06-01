@@ -55,7 +55,7 @@ class RegistrationController extends AbstractController
                     $entityManager->persist($user);
                     $entityManager->flush();
 
-                    $mail = new Mail();
+                    //$mail = new Mail();
                     $content = "Bonjour".$user->getFirstname()."<br/> Bienvenue sur notre boutique dédiée au artricles de sport.<br><br/>";
                     $mail->send($user->getEmail(), $user->getFirstname(), 'Bienvenue sur Move Your Body', $content);
                     $notification = "Votre Inscription à bien été prise en compte.<br><br/> Vous pouvez dès à présent vous pouvez connecter à votre compte.";
