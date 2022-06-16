@@ -25,7 +25,7 @@ class ContactController extends AbstractController
             $contact = $contactForm->getData();
 
             $email = (new TemplatedEmail())
-                ->from(new Address($contact['email']), $contact['firstName'] .''. $contact['lastName'])
+                ->from(new Address($contact['email']), $contact['firstname'] .''. $contact['lastName'])
                 ->replyTo(new Address($contact['email']), $contact['firstName'] .''. $contact['lastName'])
                 ->to(new Address('zahradh57@gmail.com'))
                 ->subject('MYB-Demande de contact -'. $contact['subject'])

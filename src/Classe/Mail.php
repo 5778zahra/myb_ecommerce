@@ -1,17 +1,17 @@
 <?php
 
-// namespace App\Classe;
+ namespace App\Classe;
 
 // use Mailjet\Client;
 // use Mailjet\Resources;
 
-// class Mail
-// {
+ class Mail
+ {
 //     private $api_key = 'd622305c9987be98167555daddcf6555';
 //     private $api_key_secret = '16de3c04e87885f68e961ea650d6bf3d';
 
-//     public function send($to_email, $to_name, $subject, $content)
-//     {
+     public function send($to_email, $to_name, $subject, $content)
+    {
 //         $mj = new Client($this->api_key, $this->api_key_secret, true,['version' => 'v3.1']);
 //         //$mj = new \Mailjet\Client(getenv('MJ_APIKEY_PUBLIC'), getenv('MJ_APIKEY_PRIVATE'),true,['version' => 'v3.1']);
 //         $body = [
@@ -40,8 +40,8 @@
 //         ];
 //         $response = $mj->post(Resources::$Email, ['body' => $body]);
 //         $response->success();
-//     }
-// }
+     }
+ }
 
 
 
