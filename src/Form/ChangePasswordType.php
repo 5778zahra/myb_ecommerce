@@ -49,7 +49,6 @@ class ChangePasswordType extends AbstractType
                     'second_options' => ['label' => 'Confirmez votre nouveau mot de passe'],
                     'attr' => [
                         'placeholder' => 'confirmer votre nouveau mot de passe'
-                    
                     ]
                      ])
             ->add('submit',SubmitType::class, [

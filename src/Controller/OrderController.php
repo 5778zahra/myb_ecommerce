@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OrderController extends AbstractController
 {
 
-    private $entityManager;
+private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {

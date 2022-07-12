@@ -4,9 +4,9 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\File;
+//use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+//use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -48,13 +48,7 @@ class ContactType extends AbstractType
                 ]
 
             ])
-            ->add('message', TextareaType::class, [
-                'label'=> 'Votre prénom',
-                'attr' => [
-                    'placeholder'=> 'Merci de saisir votre prénom'
-                    // 'maxLength' => 65545
-                ]
-            ])
+            
             // ->add('attachment', FileType::class, [
             //     'required' => false,
             //     'help' => 'PNG, JPEG, WEBP ou PDF - 2 Mo maximum',
@@ -81,7 +75,7 @@ class ContactType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
-                    'class'=> 'btn-block btn-success'
+                    'class'=> 'btn-block btn-primary'
                 ]
             ])
         ;
