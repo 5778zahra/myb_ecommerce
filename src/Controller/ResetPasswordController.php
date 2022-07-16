@@ -68,12 +68,22 @@ class ResetPasswordController extends AbstractController
     public function update($token): Response
     {
     
+        //  $reset_password = $this->entityManager->getRepository(ResetPassword::class)->findOneByToken($token);
+
+        // if(!$reset_password) {
+        //     return $this->redirectToRoute('reset_password');
+        // }
+        return $this->redirectToRoute('account_password');
+        
+     }
+
+     #[Route('/reinitialiser-mon-mot-de-passe/{token}', name: 'app_reset_password')]
+    public function reset($token): Response
+    {
+    
          $reset_password = $this->entityManager->getRepository(ResetPassword::class)->findOneByToken($token);
 
-        if(!$reset_password) {
-            return $this->redirectToRoute('reset_password');
-        }
-        return $this->redirectToRoute('account_password');
+        
         
      }
 

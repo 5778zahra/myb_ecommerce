@@ -43,20 +43,22 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-                            $userPasswordHasher->hashPassword(
-                                $user,
-                                $form->get('plainPassword')->getData()
-                            )
-                        );
+            
             //$user->$form->getData();            
 
             $search_email = $entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
 
             if (!$search_email) {
-                $password = $userPasswordHasher->HashPassword($user,$user->getPassword());
 
-                $user->setPassword($password);
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+//$password = $userPasswordHasher->HashPassword($user,$user->getPassword());
+
+                //$user->setPassword($password);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -99,7 +101,7 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason(), [], 'VerifyEmailBundle');
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_account');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
@@ -110,7 +112,7 @@ class RegistrationController extends AbstractController
         //         "lastname"=>$user->getLastname(), 
             //]);
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_account');
     }
 
 }

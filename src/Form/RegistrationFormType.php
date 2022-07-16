@@ -23,7 +23,6 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'label' =>'Votre prénom',
                 'constraints' => new length([
                     'min'=> 2,
                     'max'=>30,

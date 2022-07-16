@@ -13,10 +13,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OrderSuccessController extends AbstractController
 {
     private $entityManager;
+    private Mailer $mailer;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, Mailer $mailer)
     {
         $this->entityManager = $entityManager;
+        $this->mailer = $mailer;
     }
     
     #[Route('/commande/merci/{stripeSessionId}', name: 'app_order_validate')]

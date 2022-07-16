@@ -7,7 +7,11 @@
 {% if notification %}
     <div class="alert alert-info">{{ notification }}</div>
 {% endif %}  <hr>  
+<div style="background-color:red;" class="formulaireInscription">
+{{form_start(form)}}
+{# {{form_label(form.firstname, 'Nom', { 'label_attr': {'class': 'small mb-1'} }) }}
+{{form_row(form.firstname, {'label':false, 'attr': {'class': 'form-control'}})}} #}
+</div>
 
-{{form(form)}}
 
 {% endblock %}

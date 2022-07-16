@@ -16,6 +16,7 @@ body {
   background-color: #dfeaff;
   padding-top: 25px;
 } */
+/*PAGE PRODUITS*/
 
 .product-item h5 {
   text-transform: uppercase;
@@ -80,4 +81,9 @@ body {
 .account-item a:hover {
   color: #778ca3;
   text-decoration: none;
+}
+
+.formulaireInscription {
+  width: 50%;
+  background-image: url(../img/arriere.plan.jpg);
 }
