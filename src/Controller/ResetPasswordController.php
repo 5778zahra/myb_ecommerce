@@ -73,18 +73,27 @@ class ResetPasswordController extends AbstractController
         // if(!$reset_password) {
         //     return $this->redirectToRoute('reset_password');
         // }
-        return $this->redirectToRoute('account_password');
+        return $this->redirectToRoute('reset_password');
         
      }
+     //verifier si le createdAt = now + 3h
+     $now = new \DateTime();
+     if ($now > $reset_password->getCreatedAt()->modify('+ 3 hour')) {
+        $this->addFlash('notice', 'votre demande de mot de passe a expiré. Merci de la renouveller.');
+        return $this->redirectToRoute('reset_password');
+     }
 
-     #[Route('/reinitialiser-mon-mot-de-passe/{token}', name: 'app_reset_password')]
-    public function reset($token): Response
-    {
+    // dd($reset_password);
+
+    //  #[Route('/reinitialiser-mon-mot-de-passe/{token}', name: 'app_reset_password')]
+    // public function reset($token): Response
+    // {
     
-         $reset_password = $this->entityManager->getRepository(ResetPassword::class)->findOneByToken($token);
+    //      $reset_password = $this->entityManager->getRepository(ResetPassword::class)->findOneByToken($token);
 
         
         
-     }
+    //  }
+    
 
 }
