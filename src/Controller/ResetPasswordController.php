@@ -76,13 +76,13 @@ class ResetPasswordController extends AbstractController
         return $this->redirectToRoute('reset_password');
         
      }
-     //verifier si le createdAt = now + 3h
-     $now = new \DateTime();
-     if ($now > $reset_password->getCreatedAt()->modify('+ 3 hour')) {
-        $this->addFlash('notice', 'votre demande de mot de passe a expiré. Merci de la renouveller.');
-        return $this->redirectToRoute('reset_password');
-     }
-
+    //verifier si le createdAt = now + 3h
+    //  $now = new \DateTime();
+    //  if ($now > $reset_password->getCreatedAt()->modify('+ 3 hour')) {
+    //     $this->addFlash('notice', 'votre demande de mot de passe a expiré. Merci de la renouveller.');
+    //     return $this->redirectToRoute('reset_password');
+    //  }
+ 
     // dd($reset_password);
 
     //  #[Route('/reinitialiser-mon-mot-de-passe/{token}', name: 'app_reset_password')]
